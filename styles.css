@@ -14,6 +14,7 @@ body {
     align-items: center;
     height: 100vh;
     perspective: 1000px;
+    transition: transform 0.2s ease-out; /* Smooth movement effect */
 }
 
 /* Background Moving Text */
@@ -51,6 +52,27 @@ body {
     to {
         transform: translateX(-50%);
     }
+}
+
+/* More Gretas (Top & Bottom) */
+.greta-container {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    pointer-events: none;
+    font-size: 5vw;
+    font-weight: bold;
+    color: #ff0033;
+    text-shadow: 5px 5px 0px black;
+}
+
+.greta-container.top {
+    top: -5vh;
+}
+
+.greta-container.bottom {
+    bottom: -5vh;
 }
 
 /* Project Covers */
