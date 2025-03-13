@@ -1,113 +1,43 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const text = document.querySelector(".background-text");
+    const project1 = document.querySelector(".project-card.black"); // Left book
+    const project2 = document.querySelector(".project-card.white"); // Right book
 
-body {
-    background-color: black;
-    color: #ff0033;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    perspective: 1000px;
-    transition: transform 0.2s ease-out; /* Smooth movement effect */
-}
+    // Zoom-in effect for text
+    setTimeout(() => {
+        text.style.opacity = "1";
+        text.style.transform = "scale(1)";
+    }, 500);
 
-/* Background Moving Text */
-.background-text {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    gap: 20px;
-}
+    // Mouse movement tracking for full-page shift
+    document.addEventListener("mousemove", (event) => {
+        const x = (event.clientX / window.innerWidth - 0.5) * 30; 
+        const y = (event.clientY / window.innerHeight - 0.5) * 30;
+        document.body.style.transform = `translate(${x}px, ${y}px)`;
+    });
 
-.text-row {
-    display: flex;
-    white-space: nowrap;
-    font-size: 8vw;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #ff0033;
-    text-shadow: 5px 5px 0px black;
-    animation: moveText 15s linear infinite;
-}
+    // Project reveal interaction
+    document.addEventListener("mousemove", (event) => {
+        let mouseX = event.clientX / window.innerWidth;
 
-.text-row:nth-child(even) {
-    animation-direction: reverse;
-}
-
-@keyframes moveText {
-    from {
-        transform: translateX(0%);
-    }
-    to {
-        transform: translateX(-50%);
-    }
-}
-
-/* More Gretas (Top & Bottom) */
-.greta-container {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    pointer-events: none;
-    font-size: 5vw;
-    font-weight: bold;
-    color: #ff0033;
-    text-shadow: 5px 5px 0px black;
-}
-
-.greta-container.top {
-    top: -5vh;
-}
-
-.greta-container.bottom {
-    bottom: -5vh;
-}
-
-/* Project Covers */
-.projects {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.project-card {
-    width: 500px;
-    height: 700px;
-    position: absolute;
-    overflow: hidden;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-    border-radius: 15px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.project-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 15px;
-}
-
-.project-card.black {
-    left: 10%;
-}
-
-.project-card.white {
-    right: 10%;
-}
+        if (mouseX < 0.4) {
+            // Move left → Left book (Project 1) appears
+            project1.style.opacity = "1";
+            project1.style.transform = "scale(1) translateX(0)";
+            project2.style.opacity = "0";
+            project2.style.transform = "scale(0.8) translateX(100px)";
+        } else if (mouseX > 0.6) {
+            // Move right → Right book (Project 2) appears
+            project2.style.opacity = "1";
+            project2.style.transform = "scale(1) translateX(0)";
+            project1.style.opacity = "0";
+            project1.style.transform = "scale(0.8) translateX(-100px)";
+        } else {
+            // Center → Hide both
+            project1.style.opacity = "0";
+            project1.style.transform = "scale(0.8) translateX(-100px)";
+            project2.style.opacity = "0";
+            project2.style.transform = "scale(0.8) translateX(100px)";
+        }
+    });
+});
