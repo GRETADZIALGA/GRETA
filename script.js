@@ -1,24 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const homepage = document.getElementById("homepage");
     const projectCards = document.querySelectorAll(".project-card");
 
-    // Function to check when elements enter the viewport
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
-        });
-    }, { threshold: 0.3 });
+    homepage.style.display = "flex"; // Ensure homepage is visible
 
-    // Observe each project card
-    projectCards.forEach((card) => observer.observe(card));
+    // Scroll-based project reveal
+    window.addEventListener("scroll", () => {
+        let scrollPosition = window.scrollY / window.innerHeight;
 
-    // Make project cards clickable
-    document.querySelectorAll(".project-card").forEach((card) => {
-        card.addEventListener("click", () => {
-            let link = card.getAttribute("data-link");
-            if (link) {
-                window.location.href = link;
+        projectCards.forEach((card, index) => {
+            let revealPoint = 0.5 + index * 0.2; // Adjust reveal timing
+            if (scrollPosition > revealPoint) {
+                card.style.opacity = "1";
+                card.style.transform = "scale(1)";
+            } else {
+                card.style.opacity = "0.2";
+                card.style.transform = "scale(0.8)";
             }
         });
     });
