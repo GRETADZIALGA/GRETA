@@ -127,47 +127,57 @@ body {
     margin: 20px auto; /* Centers the logo */
     filter: invert(1); /* Makes logo white if needed */
 }
-/* Loading Screen */
+
+/* Loading Screen Styles */
 .loader {
     position: fixed;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: black;
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: monospace;
-    font-size: 24px;
-    color: white;
+    text-align: center;
     z-index: 9999;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.loading-text {
+    font-size: 20px;
 }
 
 .progress-bar {
     width: 300px;
     height: 20px;
     border: 2px solid white;
-    margin-top: 20px;
+    background: none;
     position: relative;
-    overflow: hidden;
 }
 
 .progress-fill {
     width: 0;
     height: 100%;
     background: white;
-    transition: width 0.2s ease-in-out;
+    transition: width 0.3s ease-in-out;
 }
 
 .loading-status {
-    margin-top: 10px;
-    font-size: 18px;
-    color: white;
+    font-size: 16px;
 }
 
+/* Enter Button */
 .enter-button {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: none;
@@ -183,5 +193,3 @@ body {
     background: white;
     color: black;
 }
-
-
