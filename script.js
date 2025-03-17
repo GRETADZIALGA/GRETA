@@ -1,4 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const loader = document.createElement("div");
+    loader.classList.add("loader");
+    loader.innerHTML = `
+        <div class="loading-text">LOADING...</div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+    `;
+    document.body.appendChild(loader);
+
+    let progress = 0;
+    const progressFill = document.querySelector(".progress-fill");
+    const loadingText = document.querySelector(".loading-text");
+
+    const interval = setInterval(() => {
+        progress += 5;
+        progressFill.style.width = progress + "%";
+        loadingText.innerText = `LOADING... ${progress}%`;
+
+        if (progress >= 100) {
+            clearInterval(interval);
+            loader.style.opacity = "0";
+            setTimeout(() => {
+                document.body.removeChild(loader);
+            }, 500);
+        }
+    }, 100);
+});
+document.addEventListener("DOMContentLoaded", () => {
     const text = document.querySelector(".background-text");
     const project1 = document.querySelector(".project-card.black"); // Left book
     const project2 = document.querySelector(".project-card.white"); // Right book
