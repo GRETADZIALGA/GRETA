@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Create loading screen elements
     const loader = document.createElement("div");
     loader.classList.add("loader");
     loader.innerHTML = `
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const progressFill = document.querySelector(".progress-fill");
     const loadingText = document.querySelector(".loading-status");
 
-    // Progress bar animation
     const interval = setInterval(() => {
         progress += 5;
         progressFill.style.width = progress + "%";
@@ -26,29 +24,26 @@ document.addEventListener("DOMContentLoaded", () => {
         if (progress >= 100) {
             clearInterval(interval);
             
-            // Delay before showing the enter button
             setTimeout(() => {
-                loader.style.opacity = "0";
+                const enterButton = document.createElement("button");
+                enterButton.innerText = "CLICK TO ENTER";
+                enterButton.classList.add("enter-button");
+                document.body.appendChild(enterButton);
 
+                loader.style.opacity = "0";
                 setTimeout(() => {
                     document.body.removeChild(loader);
-
-                    // Create Enter button
-                    const enterButton = document.createElement("button");
-                    enterButton.innerText = "CLICK TO ENTER";
-                    enterButton.classList.add("enter-button");
-                    document.body.appendChild(enterButton);
-
-                    // When button is clicked, go to the main page
-                    enterButton.addEventListener("click", () => {
-                        document.body.removeChild(enterButton);
-                        showHomepage();
-                    });
                 }, 500);
+
+                enterButton.addEventListener("click", () => {
+                    document.getElementById("homepage").style.display = "block"; // Show homepage
+                    enterButton.style.display = "none"; // Hide button
+                });
             }, 500);
         }
-    }, 250); // Adjusted timing to complete in 5 seconds (20 steps)
+    }, 250);
 });
+
 
 // Function to show the homepage
 function showHomepage() {
