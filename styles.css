@@ -10,7 +10,7 @@ body {
     font-family: Arial, sans-serif;
     overflow-x: hidden;
     overflow-y: auto;
-    height: 100vh;
+    height: 200vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,11 +33,12 @@ body {
 .text-row {
     display: flex;
     white-space: nowrap;
-    font-size: 12vw; /* Make text bigger */
+    font-size: 15vw; /* Bigger GRETA */
     font-weight: bold;
     text-transform: uppercase;
     color: #ff0033;
     text-shadow: 5px 5px 0px black;
+    letter-spacing: 10px; /* Create 1cm space */
 }
 
 /* Alternating Animation */
@@ -58,29 +59,23 @@ body {
     100% { transform: translateX(50%); }
 }
 
-/* Horizontal Scrolling Projects */
+/* Projects Scroll In from Right */
 .projects {
     position: absolute;
+    top: 50%;
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    overflow-x: auto;
-    padding-top: 100vh;
-    white-space: nowrap;
-    scroll-snap-type: x mandatory;
-}
-
-.project-track {
-    display: flex;
-    gap: 20px;
+    gap: 50px;
 }
 
 .project-card {
-    width: 350px;
-    height: 500px;
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    width: 400px;
+    height: 600px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 1s ease-out, opacity 1s ease-out;
     border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
 }
@@ -101,10 +96,11 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    padding: 20px;
 }
 
 .project-logo {
-    width: 200px;
+    width: 250px;
     margin-bottom: 20px;
 }
 
@@ -112,12 +108,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
     width: 100%;
 }
 
 .image-container img {
-    width: 90vw; /* Make images full screen */
-    height: auto;
-    max-width: 1000px;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
 }
