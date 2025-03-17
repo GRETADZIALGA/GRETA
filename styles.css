@@ -78,3 +78,28 @@ body {
     transform: translateX(100px);
 }
 
+/* Coperni & Rick Owens Logos */
+.coperni-head,
+.rick-head {
+    width: 100px; /* Adjust size */
+    display: block;
+    margin: 20px auto; /* Centers the logo */
+    filter: invert(1); /* Makes logo white if needed */
+}
+
+/* Center the images properly */
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh; /* Full height */
+}
+
+div img {
+    width: auto;
+    max-width: 80%; /* Makes sure it’s not too wide */
+    height: auto;
+    margin: 10px 0; /* Adds spacing between images */
+}
