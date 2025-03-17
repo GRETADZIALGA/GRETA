@@ -26,30 +26,36 @@ document.addEventListener("DOMContentLoaded", () => {
         if (progress >= 100) {
             clearInterval(interval);
             
-            // Show Enter button after loading
+            // Delay before showing the enter button
             setTimeout(() => {
-                const enterButton = document.createElement("button");
-                enterButton.innerText = "CLICK TO ENTER";
-                enterButton.classList.add("enter-button");
-                document.body.appendChild(enterButton);
-
-                // Hide loading elements
                 loader.style.opacity = "0";
+
                 setTimeout(() => {
                     document.body.removeChild(loader);
-                }, 500);
 
-                // When button is clicked, go to GRETA page
-                enterButton.addEventListener("click", () => {
-                    window.location.href = "index.html"; // Change this to your homepage URL
-                });
+                    // Create Enter button
+                    const enterButton = document.createElement("button");
+                    enterButton.innerText = "CLICK TO ENTER";
+                    enterButton.classList.add("enter-button");
+                    document.body.appendChild(enterButton);
+
+                    // When button is clicked, go to the main page
+                    enterButton.addEventListener("click", () => {
+                        document.body.removeChild(enterButton);
+                        showHomepage();
+                    });
+                }, 500);
             }, 500);
         }
     }, 250); // Adjusted timing to complete in 5 seconds (20 steps)
 });
 
-
-    // Main page animation after loading
+// Function to show the homepage
+function showHomepage() {
+    const homepage = document.getElementById("homepage");
+    homepage.classList.remove("hidden");
+    
+    // Start animations
     setTimeout(() => {
         const text = document.querySelector(".background-text");
         const project1 = document.querySelector(".project-card.black");
@@ -90,5 +96,5 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         });
-    }, 1500); // Ensure animations start only after the loading screen disappears
-});
+    }, 1500); // Ensure animations start only after the homepage is visible
+}
