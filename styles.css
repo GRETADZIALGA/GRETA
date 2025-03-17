@@ -18,11 +18,12 @@ body {
     position: relative;
 }
 
+/* HOME SCREEN */
 #homepage {
-    display: none; /* Keep it hidden until JavaScript reveals it */
+    display: none; /* Hidden until JavaScript reveals it */
     width: 100vw;
     height: 100vh;
-    position: fixed; /* Ensures it takes up the full screen */
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
@@ -30,35 +31,38 @@ body {
     align-items: center;
     flex-direction: column;
     overflow: hidden;
-    z-index: 10; /* Makes sure it's above the loading screen */
+    z-index: 10;
 }
 
-/* Background Moving Text - Covers Entire Screen */
+/* GRETA BACKGROUND - NEVER ENDING */
 .background-text {
-    position: fixed; /* Ensures it covers the whole page */
+    position: fixed;
     width: 100%;
     height: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: 50px; /* Adjust the spacing */
-    z-index: -1; /* Puts it behind the projects */
+    z-index: -1;
 }
 
+/* MORE TEXT ROWS FOR FULL COVERAGE */
 .text-row {
     display: flex;
     white-space: nowrap;
-    font-size: 8vw;
+    font-size: 10vw;
     font-weight: bold;
     text-transform: uppercase;
     color: #ff0033;
     text-shadow: 5px 5px 0px black;
-    animation: moveText 10s linear infinite;
+    animation: moveText 6s linear infinite;
 }
 
-/* Ensures multiple rows move continuously */
+.text-row:nth-child(even) {
+    animation-direction: reverse;
+}
+
 @keyframes moveText {
     from {
         transform: translateX(100%);
@@ -68,8 +72,7 @@ body {
     }
 }
 
-
-/* Fix Project Cards - Make them visible & center them */
+/* PROJECT CARDS - INITIALLY HIDDEN */
 .projects {
     position: absolute;
     width: 100%;
@@ -83,15 +86,16 @@ body {
 .project-card {
     width: 400px;
     height: 600px;
-    position: relative;
+    position: absolute;
     overflow: hidden;
-    opacity: 0.3; /* Visible at first */
+    opacity: 0; /* COMPLETELY HIDDEN AT FIRST */
     transform: scale(0.8);
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* PROJECT CARD IMAGES */
 .project-card img {
     width: 100%;
     height: 100%;
@@ -99,22 +103,22 @@ body {
     border-radius: 15px;
 }
 
-/* Position Project Cards */
+/* PROJECTS START OUTSIDE THE SCREEN */
 .project-card:first-child {
-    transform: translateX(-150%);
+    transform: translateX(-200%);
 }
 
 .project-card:last-child {
-    transform: translateX(150%);
+    transform: translateX(200%);
 }
 
-/* Show projects when hovering over them */
-.project-card:hover {
+/* SHOW PROJECTS ON MOUSE MOVE */
+.project-card.active {
     opacity: 1;
     transform: scale(1) translateX(0);
 }
 
-/* Fix Coperni & Rick Owens Logos */
+/* COPERNI & RICK OWENS LOGOS - SMALLER & CENTERED */
 .coperni-head,
 .rick-head {
     width: 80px;
@@ -123,7 +127,7 @@ body {
     filter: invert(1);
 }
 
-/* Fix Image Containers */
+/* IMAGE CONTAINERS - CENTERING FIX */
 .image-container {
     display: flex;
     flex-direction: column;
@@ -135,7 +139,7 @@ body {
 
 .image-container img {
     width: auto;
-    max-width: 80%;
+    max-width: 60%;
     height: auto;
     margin: 10px 0;
 }
