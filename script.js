@@ -1,28 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const homepage = document.getElementById("homepage");
-    const projects = document.querySelector(".projects");
+    const project1 = document.querySelector(".project-card:first-child");
+    const project2 = document.querySelector(".project-card:last-child");
 
-    // Ensure the homepage and projects are hidden initially
-    homepage.style.display = "none";
-    projects.style.opacity = "0";
-
-    setTimeout(() => {
-        homepage.style.display = "flex"; // Show homepage after a short delay
-        homepage.style.opacity = "1";
-
-        // Fade in the projects smoothly
-       setTimeout(() => {
-    const projectCards = document.querySelectorAll(".project-card");
-    projectCards.forEach(card => {
-        card.style.opacity = "1"; 
-        card.style.transform = "scale(1)";
-    });
-}, 800); // Slight delay after homepage appears
-
-    // Smooth Mouse movement tracking for full-page shift
     document.addEventListener("mousemove", (event) => {
-        const x = (event.clientX / window.innerWidth - 0.5) * 30; 
-        const y = (event.clientY / window.innerHeight - 0.5) * 30;
-        document.body.style.transform = `translate(${x}px, ${y}px)`;
+        let mouseX = event.clientX / window.innerWidth;
+
+        if (mouseX < 0.4) {
+            // Move left → Left project appears
+            project1.style.opacity = "1";
+            project1.style.transform = "scale(1) translateX(0)";
+            project2.style.opacity = "0";
+            project2.style.transform = "scale(0.8) translateX(100px)";
+        } else if (mouseX > 0.6) {
+            // Move right → Right project appears
+            project2.style.opacity = "1";
+            project2.style.transform = "scale(1) translateX(0)";
+            project1.style.opacity = "0";
+            project1.style.transform = "scale(0.8) translateX(-100px)";
+        } else {
+            // Center → Hide both
+            project1.style.opacity = "0";
+            project1.style.transform = "scale(0.8) translateX(-100px)";
+            project2.style.opacity = "0";
+            project2.style.transform = "scale(0.8) translateX(100px)";
+        }
     });
 });
