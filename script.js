@@ -9,7 +9,14 @@ document.addEventListener("DOMContentLoaded", () => {
         text.style.transform = "scale(1)";
     }, 500);
 
-    // Mouse movement tracking
+    // Mouse movement tracking for full-page shift
+    document.addEventListener("mousemove", (event) => {
+        const x = (event.clientX / window.innerWidth - 0.5) * 30; 
+        const y = (event.clientY / window.innerHeight - 0.5) * 30;
+        document.body.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    // Project reveal interaction
     document.addEventListener("mousemove", (event) => {
         let mouseX = event.clientX / window.innerWidth;
 
