@@ -3,57 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Name Decryption</title>
+    <title>Loading...</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
         body {
             background-color: black;
             color: white;
-            font-family: 'Courier New', monospace;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
+            flex-direction: column;
         }
-        #name-container {
-            font-size: 36px;
-            letter-spacing: 3px;
+        #loading-text {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        #progress-bar {
+            width: 300px;
+            height: 20px;
+            border: 2px solid white;
+            position: relative;
+        }
+        #progress {
+            height: 100%;
+            width: 0%;
+            background-color: white;
+        }
+        #percent {
+            margin-top: 10px;
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
 
-    <div id="name-container">█ █ █ █ █ █ █ █ █ █ █ █ █</div>
+    <div id="loading-text">// SYSTEM LOADING...</div>
+    <div id="progress-bar">
+        <div id="progress"></div>
+    </div>
+    <div id="percent">0%</div>
 
     <script>
-        const finalName = "I AM GRETA DZIALGA";
-        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*!";
-        let nameContainer = document.getElementById("name-container");
-        let iterations = 0;
-
+        let progress = 0;
         let interval = setInterval(() => {
-            let newText = "";
-            for (let i = 0; i < finalName.length; i++) {
-                if (iterations > i) {
-                    newText += finalName[i];
-                } else {
-                    newText += characters[Math.floor(Math.random() * characters.length)];
-                }
-            }
-            nameContainer.innerText = newText;
-
-            if (iterations >= finalName.length) {
+            progress += Math.floor(Math.random() * 10); 
+            if (progress >= 100) {
+                progress = 100;
                 clearInterval(interval);
                 setTimeout(() => {
-                    window.location.href = "cv.html"; // Redirect to CV Page
-                }, 1000);
+                    window.location.href = "name.html"; // Redirect to Name Glitch Page
+                }, 500);
             }
-            iterations++;
-        }, 100);
+            document.getElementById("progress").style.width = progress + "%";
+            document.getElementById("percent").innerText = progress + "%";
+        }, 500);
     </script>
 
 </body>
 </html>
+
 
 
 <html lang="en">
