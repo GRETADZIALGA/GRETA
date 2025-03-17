@@ -3,108 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading...</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Courier New', monospace;
-        }
-        body {
-            background-color: black;
-            color: white;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            flex-direction: column;
-        }
-        #loading-text {
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-        #progress-bar {
-            width: 300px;
-            height: 20px;
-            border: 2px solid white;
-            position: relative;
-        }
-        #progress {
-            height: 100%;
-            width: 0%;
-            background-color: white;
-        }
-        #percent {
-            margin-top: 10px;
-            font-size: 18px;
-        }
-    </style>
-</head>
-<body>
-
-    <div id="loading-text">// SYSTEM LOADING...</div>
-    <div id="progress-bar">
-        <div id="progress"></div>
-    </div>
-    <div id="percent">0%</div>
-
-    <script>
-        let progress = 0;
-        let interval = setInterval(() => {
-            progress += Math.floor(Math.random() * 10); 
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(interval);
-                setTimeout(() => {
-                    window.location.href = "name.html"; // Redirect to Name Glitch Page
-                }, 500);
-            }
-            document.getElementById("progress").style.width = progress + "%";
-            document.getElementById("percent").innerText = progress + "%";
-        }, 500);
-    </script>
-
-</body>
-</html>
-
-
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GRETA</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
 
-    <!-- Moving Background Text -->
-    <div class="background-text">
-        <div class="text-row"><span>GRETA &nbsp; GRETA &nbsp; GRETA &nbsp; GRETA</span></div>
-        <div class="text-row"><span>GRETA &nbsp; GRETA &nbsp; GRETA &nbsp; GRETA</span></div>
-        <div class="text-row"><span>GRETA &nbsp; GRETA &nbsp; GRETA &nbsp; GRETA</span></div>
-        <div class="text-row"><span>GRETA &nbsp; GRETA &nbsp; GRETA &nbsp; GRETA</span></div>
-        <div class="text-row"><span>GRETA &nbsp; GRETA &nbsp; GRETA &nbsp; GRETA</span></div>
-        <div class="text-row"><span>GRETA &nbsp; GRETA &nbsp; GRETA &nbsp; GRETA</span></div>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <p>WELCOME TO MY PROFILE….</p>
+        <div class="loading-box">
+            <div class="progress-bar"></div>
+            <span class="loading-text">0%</span>
+        </div>
+        <p>//SYSTEM LOADING</p>
     </div>
 
-    <!-- Interactive Project Covers -->
-    <div class="projects">
-        <div class="project-card black">
-            <a href="coperni.html">
-                <img src="IMAGES/COPERNI/COPERNI01.jpg" alt="Coperni Project">
-            </a>
+    <!-- Main Homepage (Hidden at First) -->
+    <div id="homepage" class="hidden">
+        <div class="background-text">
+            <div class="text-row">GRETA GRETA GRETA GRETA</div>
+            <div class="text-row">GRETA GRETA GRETA GRETA</div>
+            <div class="text-row">GRETA GRETA GRETA GRETA</div>
+            <div class="text-row">GRETA GRETA GRETA GRETA</div>
+            <div class="text-row">GRETA GRETA GRETA GRETA</div>
+            <div class="text-row">GRETA GRETA GRETA GRETA</div>
+            <div class="text-row">GRETA GRETA GRETA GRETA</div>
+            <div class="text-row">GRETA GRETA GRETA GRETA</div>
+            <div class="text-row">GRETA GRETA GRETA GRETA</div>
         </div>
-        <div class="project-card white">
-            <a href="book2.html"> <!-- If there's a second project, change this link -->
-                <img src="IMAGES/RICKOWENS01.jpg" alt="RICKOWENS">
+
+        <div class="projects">
+            <a href="coperni.html" class="project-card">
+                <img src="IMAGES/COPERNI/project1.jpg" alt="Coperni Project">
+            </a>
+            <a href="rickowens.html" class="project-card">
+                <img src="IMAGES/RICKOWENS/RICKOWENS01.jpg" alt="Rick Owens Project">
             </a>
         </div>
     </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
