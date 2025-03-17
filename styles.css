@@ -20,7 +20,7 @@ body {
 /* Background Moving Text */
 .background-text {
     position: absolute;
-    width: 100%;
+    width: 200%; /* Make it extra wide for continuous looping */
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -39,65 +39,34 @@ body {
     text-transform: uppercase;
     color: #ff0033;
     text-shadow: 5px 5px 0px black;
-    animation: moveText 15s linear infinite;
+    animation: moveText 10s linear infinite;
 }
 
 .text-row:nth-child(even) {
     animation-direction: reverse;
 }
 
+/* Make the text truly infinite */
 @keyframes moveText {
     from {
         transform: translateX(0%);
     }
     to {
-        transform: translateX(-50%);
+        transform: translateX(-100%);
     }
 }
 
-/* Homepage (Hidden at First) */
-#homepage {
-    display: none;
-    width: 100vw;
-    height: 100vh;
-    position: relative; /* Make sure it appears properly */
-    top: 0;
-    left: 0;
-    display: flex; /* Ensure it properly centers content */
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-/* Project Covers */
-.projects {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10; /* Ensures it's above background text */
-}
-
+/* Projects are hidden at first */
 .project-card {
     width: 500px;
     height: 700px;
     position: absolute;
     overflow: hidden;
-    opacity: 1; /* This is why they are hidden */
-    transform: scale(1);
+    opacity: 0; /* Start hidden */
+    transform: scale(0.8);
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-
-.project-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 15px;
 }
 
 /* Adjust project card placement */
@@ -108,3 +77,4 @@ body {
 .project-card:last-child {
     transform: translateX(100px);
 }
+
