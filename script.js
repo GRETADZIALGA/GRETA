@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
 // Function to show the homepage
 function showHomepage() {
     const homepage = document.getElementById("homepage");
