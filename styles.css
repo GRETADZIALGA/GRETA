@@ -90,3 +90,23 @@ body {
 .project-card:last-child {
     right: 10%;
 }
+/* Hide the homepage initially */
+#homepage {
+    display: none; /* Keeps it hidden until JavaScript reveals it */
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Make sure everything inside the homepage is centered properly */
+.background-text, .projects {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
