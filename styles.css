@@ -128,47 +128,41 @@ body {
     filter: invert(1); /* Makes logo white if needed */
 }
 /* Loading Screen */
-#loading-screen {
+.loader {
     position: fixed;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background: black;
-    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Courier New', monospace;
-    text-align: center;
+    font-family: monospace;
+    font-size: 24px;
+    color: white;
+    z-index: 9999;
 }
 
-.loading-box {
+.progress-bar {
     width: 300px;
-    height: 30px;
-    background: #222;
+    height: 20px;
     border: 2px solid white;
-    margin: 10px 0;
+    margin-top: 20px;
     position: relative;
     overflow: hidden;
 }
 
-.progress-bar {
+.progress-fill {
+    width: 0;
     height: 100%;
-    width: 0%;
     background: white;
-    transition: width 0.1s;
+    transition: width 0.2s ease-in-out;
 }
 
-.loading-text {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    font-size: 1.2rem;
+.loading-status {
+    margin-top: 10px;
+    font-size: 18px;
     color: white;
 }
 
-/* Hide Homepage Initially */
-.hidden {
-    display: none;
-}
 
