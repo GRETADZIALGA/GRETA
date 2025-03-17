@@ -193,7 +193,11 @@ body {
     background: white;
     color: black;
 }
+
 .hidden {
     display: none;
 }
 
+#homepage {
+    display: none; /* Hide homepage initially */
+}
