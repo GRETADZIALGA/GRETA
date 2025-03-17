@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         projects.forEach((project, index) => {
             let delay = index * 0.2; // Stagger effect
-            let projectOffset = project.offsetTop - window.innerHeight * 0.75;
+            let projectOffset = project.offsetTop - window.innerHeight * 0.8;
 
             if (scrollY > projectOffset) {
                 project.style.opacity = "1";
