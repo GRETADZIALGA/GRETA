@@ -8,26 +8,28 @@ body {
     background-color: black;
     color: #ff0033;
     font-family: Arial, sans-serif;
-    overflow-x: hidden;
-    overflow-y: scroll; /* Allows vertical scrolling */
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack elements properly */
+    justify-content: center;
     align-items: center;
     height: 100vh;
+    perspective: 1000px;
+    transition: transform 0.2s ease-out;
     position: relative;
 }
 
-/* GRETA Background - Static */
+/* 🔥 Fix GRETA Background Text 🔥 */
 .background-text {
     position: fixed;
     width: 100%;
     height: 100%;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     z-index: -1;
+    overflow: hidden;
 }
 
 .text-row {
@@ -38,7 +40,6 @@ body {
     text-transform: uppercase;
     color: #ff0033;
     text-shadow: 5px 5px 0px black;
-    width: 300%;
     animation: moveText 8s linear infinite;
 }
 
@@ -55,48 +56,73 @@ body {
     }
 }
 
-/* SCROLL CONTAINER */
-#scroll-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* 🔥 Fix Homepage Layout 🔥 */
+#homepage {
+    display: flex; /* This ensures it stays centered */
     justify-content: center;
-    width: 100%;
-    height: auto;
-    padding: 200px 0; /* Space for scrolling */
-    position: relative;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* PROJECT CARDS - INITIALLY HIDDEN */
+/* 🔥 Fix Project Cards 🔥 */
+.projects {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 100px; /* Space between projects */
+    z-index: 10;
+}
+
 .project-card {
     width: 400px;
     height: 600px;
-    margin: 200px 0; /* Space between projects */
-    position: relative;
-    overflow: hidden;
-    opacity: 0; /* Projects are hidden at first */
-    transform: translateY(50px); /* Slight offset for animation */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    opacity: 0.2;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
 }
 
-/* Once the project is visible, fade it in */
-.project-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Clickable Project Images */
 .project-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 15px;
-    cursor: pointer;
 }
 
-/* Hover Effect */
+/* ✨ Show project on hover ✨ */
 .project-card:hover {
+    opacity: 1;
     transform: scale(1.1);
+}
+
+/* 🔥 Fix Coperni & Rick Owens Logos 🔥 */
+.coperni-head,
+.rick-head {
+    width: 80px; /* SMALLER LOGO */
+    display: block;
+    margin: 20px auto;
+    filter: invert(1);
+}
+
+/* 🔥 Fix Image Containers 🔥 */
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.image-container img {
+    width: auto;
+    max-width: 60%;
+    height: auto;
+    margin: 10px 0;
 }
