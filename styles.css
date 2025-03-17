@@ -20,15 +20,10 @@ body {
 /* Background Moving Text */
 .background-text {
     position: absolute;
-    width: 200%; /* Make it extra wide for continuous looping */
+    width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
-    gap: 20px;
-    z-index: 1; /* Ensures it's behind the projects */
+    z-index: 1;
 }
 
 .text-row {
@@ -46,15 +41,15 @@ body {
     animation-direction: reverse;
 }
 
-/* Make the text truly infinite */
 @keyframes moveText {
     from {
-        transform: translateX(0%);
+        transform: translateX(100%);
     }
     to {
         transform: translateX(-100%);
     }
 }
+
 
 /* Projects are hidden at first */
 .project-card {
