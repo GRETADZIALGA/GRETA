@@ -15,6 +15,7 @@ body {
     height: 100vh;
     perspective: 1000px;
     transition: transform 0.2s ease-out;
+    position: relative;
 }
 
 /* Background Moving Text */
@@ -22,13 +23,13 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
     z-index: 1;
+    overflow: hidden;
 }
 
 .text-row {
@@ -40,6 +41,7 @@ body {
     color: #ff0033;
     text-shadow: 5px 5px 0px black;
     animation: moveText 10s linear infinite;
+    width: 200%;
 }
 
 .text-row:nth-child(even) {
@@ -55,7 +57,7 @@ body {
     }
 }
 
-/* Projects (Hidden at first, appear when hovered) */
+/* Projects stay visible but scale in */
 .projects {
     position: absolute;
     width: 100%;
@@ -63,7 +65,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10;
+    z-index: 5;
+    pointer-events: none;
 }
 
 .project-card {
@@ -71,7 +74,7 @@ body {
     height: 700px;
     position: absolute;
     overflow: hidden;
-    opacity: 0;
+    opacity: 0.3; /* Slight visibility at first */
     transform: scale(0.8);
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     border-radius: 15px;
@@ -88,15 +91,15 @@ body {
 
 /* Adjust project card placement */
 .project-card:first-child {
-    left: 20%;
+    left: 25%;
 }
 
 .project-card:last-child {
-    right: 20%;
+    right: 25%;
 }
 
-/* Reveal projects when hovering near them */
-.projects:hover .project-card {
+/* Show projects when hovering over them */
+.project-card:hover {
     opacity: 1;
     transform: scale(1);
 }
@@ -104,7 +107,7 @@ body {
 /* Coperni & Rick Owens Logos */
 .coperni-head,
 .rick-head {
-    width: 80px; /* Smaller logo */
+    width: 80px;
     display: block;
     margin: 10px auto;
     filter: invert(1);
