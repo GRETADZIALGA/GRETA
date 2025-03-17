@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Decryption</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #name-container {
+            font-size: 36px;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="name-container">█ █ █ █ █ █ █ █ █ █ █ █ █</div>
+
+    <script>
+        const finalName = "I AM GRETA DZIALGA";
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*!";
+        let nameContainer = document.getElementById("name-container");
+        let iterations = 0;
+
+        let interval = setInterval(() => {
+            let newText = "";
+            for (let i = 0; i < finalName.length; i++) {
+                if (iterations > i) {
+                    newText += finalName[i];
+                } else {
+                    newText += characters[Math.floor(Math.random() * characters.length)];
+                }
+            }
+            nameContainer.innerText = newText;
+
+            if (iterations >= finalName.length) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    window.location.href = "cv.html"; // Redirect to CV Page
+                }, 1000);
+            }
+            iterations++;
+        }, 100);
+    </script>
+
+</body>
+</html>
