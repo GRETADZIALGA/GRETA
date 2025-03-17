@@ -1,21 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
     const homepage = document.getElementById("homepage");
-    const projectCards = document.querySelectorAll(".project-card");
+    const projects = document.querySelectorAll(".project-card");
 
-    homepage.style.display = "flex"; // Ensure homepage is visible
+    // Make homepage visible
+    homepage.style.display = "flex";
 
-    // Scroll-based project reveal
-    window.addEventListener("scroll", () => {
-        let scrollPosition = window.scrollY / window.innerHeight;
+    // Handle scroll event for showing projects
+    document.addEventListener("scroll", () => {
+        let scrollY = window.scrollY;
 
-        projectCards.forEach((card, index) => {
-            let revealPoint = 0.5 + index * 0.2; // Adjust reveal timing
-            if (scrollPosition > revealPoint) {
-                card.style.opacity = "1";
-                card.style.transform = "scale(1)";
+        projects.forEach((project, index) => {
+            let projectOffset = project.offsetTop - window.innerHeight / 1.5;
+
+            if (scrollY > projectOffset) {
+                project.style.opacity = "1";
+                project.style.transform = "scale(1) translateX(0)";
             } else {
-                card.style.opacity = "0.2";
-                card.style.transform = "scale(0.8)";
+                project.style.opacity = "0.3";
+                project.style.transform = "scale(0.8) translateX(-100px)";
             }
         });
     });
