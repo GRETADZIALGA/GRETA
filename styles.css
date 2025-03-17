@@ -1,4 +1,3 @@
-/* Global Reset */
 * {
     margin: 0;
     padding: 0;
@@ -9,15 +8,16 @@ body {
     background-color: black;
     color: #ff0033;
     font-family: Arial, sans-serif;
-    overflow-x: hidden;
+    overflow-x: hidden; /* No horizontal scroll */
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-direction: column;
     position: relative;
 }
 
-/* Background Text - Fixed Infinite Scroll */
+/* Background Moving Text */
 .background-text {
     position: fixed;
     width: 100%;
@@ -39,53 +39,38 @@ body {
     text-transform: uppercase;
     color: #ff0033;
     text-shadow: 5px 5px 0px black;
-    animation: moveText 15s linear infinite;
 }
 
-.text-row:nth-child(even) {
-    animation-direction: reverse;
+.text-row::after {
+    content: attr(data-text);
+    padding-left: 50px;
 }
 
-@keyframes moveText {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(-100%);
-    }
-}
-
-/* Scrollable Project Cards */
-#scroll-container {
+/* Project Cards */
+.projects {
+    position: absolute;
+    width: 100%;
+    height: 300vh; /* Long enough to scroll */
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
-    overflow-y: auto;
-    padding-top: 10vh;
+    align-items: center;
 }
 
 .project-card {
-    width: 50vw;
-    height: auto;
-    opacity: 0.5;
+    width: 400px;
+    height: 600px;
+    opacity: 0;
+    transform: scale(0.8);
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-    margin: 50px 0;
-    position: relative;
-    cursor: pointer;
+    margin: 100px 0;
 }
 
 .project-card img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     border-radius: 15px;
-}
-
-.project-card:hover {
-    opacity: 1;
-    transform: scale(1.05);
 }
