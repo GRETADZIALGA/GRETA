@@ -1,13 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const projectCards = document.querySelectorAll(".project-card");
+    const projects = document.querySelectorAll(".project-card");
 
-    // Reveal projects as they scroll in
     function revealProjects() {
         let scrollY = window.scrollY;
 
-        projectCards.forEach((project, index) => {
-            let delay = index * 0.4;
-            let projectOffset = project.offsetTop - window.innerHeight * 0.7;
+        projects.forEach((project, index) => {
+            let delay = index * 0.4; // Delays each project slightly
+            let projectOffset = project.offsetTop - window.innerHeight * 0.8; // Change trigger point
 
             if (scrollY > projectOffset) {
                 project.style.opacity = "1";
@@ -19,10 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener("scroll", revealProjects);
 
-    // Flip effect on click
-    projectCards.forEach(card => {
-        card.addEventListener("click", () => {
-            card.classList.toggle("flipped");
-        });
-    });
+    // Run once on page load to show any visible projects
+    revealProjects();
 });
