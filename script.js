@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let scrollY = window.scrollY;
 
         projects.forEach((project, index) => {
-            let delay = index * 0.4; // Delays each project slightly
-            let projectOffset = project.offsetTop - window.innerHeight * 0.8; // Change trigger point
+            let delay = index * 0.3; // More random delay
+            let projectOffset = project.offsetTop - window.innerHeight * 0.7;
 
             if (scrollY > projectOffset) {
                 project.style.opacity = "1";
@@ -17,7 +17,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.addEventListener("scroll", revealProjects);
-
-    // Run once on page load to show any visible projects
-    revealProjects();
 });
