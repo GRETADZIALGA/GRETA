@@ -193,3 +193,7 @@ body {
     background: white;
     color: black;
 }
+.hidden {
+    display: none;
+}
+
