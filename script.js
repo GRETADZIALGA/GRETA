@@ -3,11 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const loader = document.createElement("div");
     loader.classList.add("loader");
     loader.innerHTML = `
-        <div class="loading-text">WELCOME TO MY PROFILE...</div>
-        <div class="progress-bar">
-            <div class="progress-fill"></div>
+        <div class="loading-container">
+            <div class="loading-text">WELCOME TO MY PROFILE...</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="loading-status">//SYSTEM LOADING 0%</div>
         </div>
-        <div class="loading-status">//SYSTEM LOADING 0%</div>
     `;
     document.body.appendChild(loader);
 
@@ -23,27 +25,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (progress >= 100) {
             clearInterval(interval);
+            
+            // Show Enter button after loading
+            setTimeout(() => {
+                const enterButton = document.createElement("button");
+                enterButton.innerText = "CLICK TO ENTER";
+                enterButton.classList.add("enter-button");
+                document.body.appendChild(enterButton);
+
+                // Hide loading elements
+                loader.style.opacity = "0";
+                setTimeout(() => {
+                    document.body.removeChild(loader);
+                }, 500);
+
+                // When button is clicked, go to GRETA page
+                enterButton.addEventListener("click", () => {
+                    window.location.href = "index.html"; // Change this to your homepage URL
+                });
+            }, 500);
         }
     }, 250); // Adjusted timing to complete in 5 seconds (20 steps)
-
-    // After 5 seconds, show the button
-    setTimeout(() => {
-        const enterButton = document.createElement("button");
-        enterButton.innerText = "CLICK TO ENTER";
-        enterButton.classList.add("enter-button");
-        document.body.appendChild(enterButton);
-
-        // Hide loading elements
-        loader.style.opacity = "0";
-        setTimeout(() => {
-            document.body.removeChild(loader);
-        }, 500);
-
-        // When the button is clicked, go to the GRETA page
-        enterButton.addEventListener("click", () => {
-            window.location.href = "index.html"; // Change to your homepage URL
-        });
-    }, 5000); // Show button after 5 seconds
 });
 
 
