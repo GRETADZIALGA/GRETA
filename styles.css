@@ -18,16 +18,16 @@ body {
     position: relative;
 }
 
-/* Background Moving Text */
+/* Background Moving Text - Covers Entire Screen */
 .background-text {
     position: absolute;
-    width: 100%;
+    width: 300%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     z-index: 1;
     overflow: hidden;
 }
@@ -41,7 +41,7 @@ body {
     color: #ff0033;
     text-shadow: 5px 5px 0px black;
     animation: moveText 10s linear infinite;
-    width: 200%;
+    width: 300%;
 }
 
 .text-row:nth-child(even) {
@@ -57,7 +57,7 @@ body {
     }
 }
 
-/* Projects stay visible but scale in */
+/* Fix Project Cards - Make them visible & center them */
 .projects {
     position: absolute;
     width: 100%;
@@ -66,20 +66,18 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 5;
-    pointer-events: none;
 }
 
 .project-card {
-    width: 500px;
-    height: 700px;
-    position: absolute;
+    width: 400px;
+    height: 600px;
+    position: relative;
     overflow: hidden;
-    opacity: 0.3; /* Slight visibility at first */
+    opacity: 0.3; /* Visible at first */
     transform: scale(0.8);
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-    pointer-events: auto;
 }
 
 .project-card img {
@@ -89,31 +87,31 @@ body {
     border-radius: 15px;
 }
 
-/* Adjust project card placement */
+/* Position Project Cards */
 .project-card:first-child {
-    left: 25%;
+    transform: translateX(-150%);
 }
 
 .project-card:last-child {
-    right: 25%;
+    transform: translateX(150%);
 }
 
 /* Show projects when hovering over them */
 .project-card:hover {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateX(0);
 }
 
-/* Coperni & Rick Owens Logos */
+/* Fix Coperni & Rick Owens Logos */
 .coperni-head,
 .rick-head {
     width: 80px;
     display: block;
-    margin: 10px auto;
+    margin: 20px auto;
     filter: invert(1);
 }
 
-/* Center Images */
+/* Fix Image Containers */
 .image-container {
     display: flex;
     flex-direction: column;
