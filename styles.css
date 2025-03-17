@@ -1,119 +1,32 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: black;
-    color: #ff0033;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: 200vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Background Text */
-.background-text {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.text-row {
-    display: flex;
-    white-space: nowrap;
-    font-size: 15vw; /* Bigger GRETA */
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #ff0033;
-    text-shadow: 5px 5px 0px black;
-    letter-spacing: 10px; /* Create 1cm space */
-}
-
-/* Alternating Animation */
-.left {
-    animation: moveLeft 8s linear infinite;
-}
-.right {
-    animation: moveRight 8s linear infinite;
-}
-
+/* Slower Background Text Movement */
 @keyframes moveLeft {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(-30%); } /* Slower movement */
 }
 
 @keyframes moveRight {
     0% { transform: translateX(0); }
-    100% { transform: translateX(50%); }
+    100% { transform: translateX(30%); } /* Slower movement */
 }
 
-/* Projects Scroll In from Right */
+/* Projects Slide in from Right */
 .projects {
     position: absolute;
     top: 50%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* Start from left */
     gap: 50px;
+    padding-left: 10vw; /* Push them into view */
 }
 
 .project-card {
     width: 400px;
     height: 600px;
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateX(100vw); /* Start way off-screen */
     transition: transform 1s ease-out, opacity 1s ease-out;
     border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.project-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 15px;
-}
-
-/* Project Pages */
-.project-page {
-    background-color: white;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    padding: 20px;
-}
-
-.project-logo {
-    width: 250px;
-    margin-bottom: 20px;
-}
-
-.image-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    width: 100%;
-}
-
-.image-container img {
-    width: 100vw;
-    height: 100vh;
-    object-fit: contain;
 }
