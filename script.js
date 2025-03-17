@@ -1,11 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const backgroundText = document.querySelector(".background-text");
+    const projectCards = document.querySelectorAll(".project-card");
 
-    // Make the GRETA text move when you scroll
-    document.addEventListener("scroll", () => {
-        let scrollY = window.scrollY;
-        backgroundText.style.transform = `translateY(${scrollY * 0.3}px)`;
-    });
+    // Function to check when elements enter the viewport
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.3 });
+
+    // Observe each project card
+    projectCards.forEach((card) => observer.observe(card));
 
     // Make project cards clickable
     document.querySelectorAll(".project-card").forEach((card) => {
