@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Create loading screen elements
     const loader = document.createElement("div");
     loader.classList.add("loader");
     loader.innerHTML = `
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const progressFill = document.querySelector(".progress-fill");
     const loadingText = document.querySelector(".loading-status");
 
+    // Progress bar animation
     const interval = setInterval(() => {
         progress += 5;
         progressFill.style.width = progress + "%";
@@ -24,25 +26,26 @@ document.addEventListener("DOMContentLoaded", () => {
         if (progress >= 100) {
             clearInterval(interval);
             
+            // Show Enter button after loading
             setTimeout(() => {
                 const enterButton = document.createElement("button");
                 enterButton.innerText = "CLICK TO ENTER";
                 enterButton.classList.add("enter-button");
                 document.body.appendChild(enterButton);
 
-                loader.style.opacity = "0";
-                setTimeout(() => {
-                    document.body.removeChild(loader);
-                }, 500);
-
+                // Hide loading elements
+                loader.style.display = "none"; // Fully remove loading screen
+                
+                // When button is clicked, show homepage
                 enterButton.addEventListener("click", () => {
-                    document.getElementById("homepage").style.display = "block"; // Show homepage
-                    enterButton.style.display = "none"; // Hide button
+                    document.getElementById("homepage").style.display = "block";
+                    enterButton.style.display = "none"; // Hide button after clicking
                 });
             }, 500);
         }
-    }, 250);
+    }, 250); // Adjusted timing to complete in 5 seconds (20 steps)
 });
+
 
 
 
