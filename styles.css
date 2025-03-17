@@ -18,6 +18,21 @@ body {
     position: relative;
 }
 
+#homepage {
+    display: none; /* Keep it hidden until JavaScript reveals it */
+    width: 100vw;
+    height: 100vh;
+    position: fixed; /* Ensures it takes up the full screen */
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 10; /* Makes sure it's above the loading screen */
+}
+
 /* Background Moving Text - Covers Entire Screen */
 .background-text {
     position: absolute;
