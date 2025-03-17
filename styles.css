@@ -9,15 +9,14 @@ body {
     color: #ff0033;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
-    overflow-y: auto; /* Allow scrolling */
-    height: 300vh; /* Long scroll */
-    position: relative;
+    overflow-y: auto;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Background Text - Fills the whole screen */
+/* Background Text */
 .background-text {
     position: fixed;
     width: 100%;
@@ -34,32 +33,56 @@ body {
 .text-row {
     display: flex;
     white-space: nowrap;
-    font-size: 8vw;
+    font-size: 12vw; /* Make text bigger */
     font-weight: bold;
     text-transform: uppercase;
     color: #ff0033;
     text-shadow: 5px 5px 0px black;
 }
 
-/* Project Cards */
+/* Alternating Animation */
+.left {
+    animation: moveLeft 8s linear infinite;
+}
+.right {
+    animation: moveRight 8s linear infinite;
+}
+
+@keyframes moveLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes moveRight {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(50%); }
+}
+
+/* Horizontal Scrolling Projects */
 .projects {
     position: absolute;
     width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding-top: 100vh; /* Space before projects appear */
+    overflow-x: auto;
+    padding-top: 100vh;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+}
+
+.project-track {
+    display: flex;
+    gap: 20px;
 }
 
 .project-card {
     width: 350px;
     height: 500px;
-    opacity: 0;
-    transform: scale(0.8);
+    flex-shrink: 0;
+    scroll-snap-align: start;
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-    margin: 100px 0;
 }
 
 .project-card img {
@@ -69,32 +92,32 @@ body {
     border-radius: 15px;
 }
 
-/* Image Gallery for Project Pages */
+/* Project Pages */
+.project-page {
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.project-logo {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
 .image-container {
     display: flex;
-    overflow-x: auto;
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
-    padding: 20px;
-    scroll-snap-type: x mandatory;
-    white-space: nowrap;
+    width: 100%;
 }
 
 .image-container img {
-    width: 300px; /* Adjust size */
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    border-radius: 10px;
-}
-
-/* Back Button */
-.back-button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: rgba(255, 0, 51, 0.8);
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
+    width: 90vw; /* Make images full screen */
+    height: auto;
+    max-width: 1000px;
 }
