@@ -1,18 +1,131 @@
-<!-- GRETA BACKGROUND (STAYS STILL) -->
-<div class="background-text">
-    <div class="text-row">GRETA GRETA GRETA GRETA GRETA GRETA GRETA</div>
-    <div class="text-row">GRETA GRETA GRETA GRETA GRETA GRETA GRETA</div>
-    <div class="text-row">GRETA GRETA GRETA GRETA GRETA GRETA GRETA</div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Display</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: black;
+            color: #ff0033;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
 
-<!-- SCROLLABLE PROJECT SECTION -->
-<div id="scroll-container">
-    <div class="project-card" data-link="coperni.html">
-        <img src="IMAGES/COPERNI/project1.jpg" alt="Coperni Project">
+        /* Background Text - Fixed Infinite Scroll */
+        .background-text {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .text-row {
+            display: flex;
+            white-space: nowrap;
+            font-size: 10vw;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #ff0033;
+            text-shadow: 5px 5px 0px black;
+            animation: moveText 15s linear infinite;
+        }
+
+        .text-row:nth-child(even) {
+            animation-direction: reverse;
+        }
+
+        @keyframes moveText {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Scrollable Project Cards */
+        #scroll-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow-y: auto;
+            padding-top: 10vh;
+        }
+
+        .project-card {
+            width: 50vw;
+            height: auto;
+            opacity: 0.5;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+            margin: 50px 0;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .project-card:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- GRETA BACKGROUND (STAYS STILL) -->
+    <div class="background-text">
+        <div class="text-row">GRETA GRETA GRETA GRETA GRETA GRETA GRETA</div>
+        <div class="text-row">GRETA GRETA GRETA GRETA GRETA GRETA GRETA</div>
+        <div class="text-row">GRETA GRETA GRETA GRETA GRETA GRETA GRETA</div>
+    </div> 
+
+    <!-- SCROLLABLE PROJECT SECTION -->
+    <div id="scroll-container">
+        <div class="project-card" data-link="coperni.html">
+            <img src="IMAGES/COPERNI/project1.jpg" alt="Coperni Project">
+        </div>
+        <div class="project-card" data-link="rickowens.html">
+            <img src="IMAGES/RICKOWENS/RICKOWENS01.jpg" alt="Rick Owens Project">
+        </div>
     </div>
-    <div class="project-card" data-link="rickowens.html">
-        <img src="IMAGES/RICKOWENS/RICKOWENS01.jpg" alt="Rick Owens Project">
-    </div>
-</div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const projects = document.querySelectorAll(".project-card");
 
+            projects.forEach((project) => {
+                project.addEventListener("click", () => {
+                    window.location.href = project.getAttribute("data-link");
+                });
+            });
+        });
+    </script>
+</body>
+</html>
