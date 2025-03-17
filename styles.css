@@ -111,3 +111,13 @@ body {
 .project-card.white {
     right: 10%;
 }
+
+/* Coperni Logo */
+.coperni-head {
+    width: 150px; /* Adjust size if needed */
+    display: block;
+    margin: 20px auto; /* Centers the logo */
+    filter: invert(1); /* Inverts color to white if needed */
+}
+
+
