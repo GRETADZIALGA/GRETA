@@ -11,10 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
         homepage.style.opacity = "1";
 
         // Fade in the projects smoothly
-        setTimeout(() => {
-            projects.style.opacity = "1";
-        }, 300);
-    }, 500); // Delay for ensuring everything loads properly
+       setTimeout(() => {
+    const projectCards = document.querySelectorAll(".project-card");
+    projectCards.forEach(card => {
+        card.style.opacity = "1"; 
+        card.style.transform = "scale(1)";
+    });
+}, 800); // Slight delay after homepage appears
 
     // Smooth Mouse movement tracking for full-page shift
     document.addEventListener("mousemove", (event) => {
