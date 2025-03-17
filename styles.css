@@ -10,7 +10,7 @@ body {
     font-family: Arial, sans-serif;
     overflow-x: hidden;
     overflow-y: auto;
-    height: 300vh; /* Longer scroll effect */
+    height: 400vh; /* Extended scroll effect */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,25 +38,25 @@ body {
     text-transform: uppercase;
     color: #ff0033;
     text-shadow: 5px 5px 0px black;
-    letter-spacing: 10px; /* Creates 1cm space */
+    letter-spacing: 10px;
 }
 
 /* Slower Background Animation */
 .left {
-    animation: moveLeft 20s linear infinite;
+    animation: moveLeft 30s linear infinite;
 }
 .right {
-    animation: moveRight 20s linear infinite;
+    animation: moveRight 30s linear infinite;
 }
 
 @keyframes moveLeft {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-20%); } /* Super slow */
+    100% { transform: translateX(-15%); }
 }
 
 @keyframes moveRight {
     0% { transform: translateX(0); }
-    100% { transform: translateX(20%); } /* Super slow */
+    100% { transform: translateX(15%); }
 }
 
 /* Projects Scroll In from Right */
@@ -66,21 +66,66 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 200px; /* More space between projects */
-    padding-top: 200vh; /* Longer scroll experience */
+    gap: 250px;
+    padding-top: 200vh;
 }
 
-/* Make each project appear at different vertical heights */
-.project-card:nth-child(1) { transform: translateX(120vw) translateY(-50px); }
-.project-card:nth-child(2) { transform: translateX(140vw) translateY(80px); }
-.project-card:nth-child(3) { transform: translateX(110vw) translateY(-100px); }
-.project-card:nth-child(4) { transform: translateX(130vw) translateY(60px); }
+/* Randomized Entry Positions */
+.project-card:nth-child(1) { transform: translateX(120vw) translateY(-80px); }
+.project-card:nth-child(2) { transform: translateX(140vw) translateY(100px); }
+.project-card:nth-child(3) { transform: translateX(110vw) translateY(-150px); }
 
+/* Flip Card Container */
 .project-card {
     width: 400px;
     height: 600px;
+    perspective: 1000px;
+    cursor: pointer;
     opacity: 0;
     transition: transform 1.5s ease-out, opacity 1.5s ease-out;
     border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Front & Back Faces */
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}
+
+/* Front Image */
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* Back Side */
+.card-back {
+    background-color: #ff0033;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    transform: rotateY(180deg);
+}
+
+/* Flip Effect */
+.project-card.flipped .card-inner {
+    transform: rotateY(180deg);
 }
