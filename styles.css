@@ -120,4 +120,11 @@ body {
     filter: invert(1); /* Inverts color to white if needed */
 }
 
+/* Rick Owens Logo */
+.rick-head {
+    width: 150px; /* Adjust if needed */
+    display: block;
+    margin: 20px auto; /* Centers the logo */
+    filter: invert(1); /* Makes logo white if needed */
+}
 
