@@ -165,4 +165,23 @@ body {
     color: white;
 }
 
+.enter-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.enter-button:hover {
+    background: white;
+    color: black;
+}
+
 
