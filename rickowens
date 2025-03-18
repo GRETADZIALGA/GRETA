@@ -6,7 +6,7 @@
     <title>Rick Owens Project</title>
     <link rel="stylesheet" href="styles.css"> 
 </head>
-<body class="project-page">
+<body class="project-page"> <!-- ADDED CLASS HERE -->
 
     <img class="project-logo" src="IMAGES/RICKOWENS/RickOwensLogo.png" alt="Rick Owens Logo">
 
