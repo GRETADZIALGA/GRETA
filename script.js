@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         gsap.to(project, {
             x: "120vw", // Move fully across the screen
             opacity: 1, // Keep visible
-            duration: 12, // SUPER SLOW (12 seconds)
+            duration: 40, // SUPER SLOW (40 seconds)
             delay: index * 6, // Makes them move **one at a time** (6 sec delay between each)
             ease: "power2.out",
             onComplete: () => {
