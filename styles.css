@@ -84,3 +84,21 @@ body {
     border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
 }
+/* White Background for Project Pages */
+.project-page {
+    background-color: white; /* Makes background white */
+    color: black; /* Ensures text is readable */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Make Images Full-Screen */
+.image-container img {
+    width: 100vw; /* Full screen width */
+    height: 100vh; /* Full screen height */
+    object-fit: contain; /* Ensures entire image is visible */
+}
