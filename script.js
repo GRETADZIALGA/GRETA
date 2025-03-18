@@ -1,25 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
     const projects = document.querySelectorAll(".project-card");
+    let lastScrollTop = 0;
 
-    document.addEventListener("scroll", () => {
-        let scrollY = window.scrollY;
-        let windowHeight = window.innerHeight;
+    window.addEventListener("scroll", () => {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let direction = scrollTop > lastScrollTop ? 1 : -1; // 1 for scrolling down, -1 for scrolling up
+        lastScrollTop = scrollTop;
 
         projects.forEach((project, index) => {
-            let delay = index * 500; // Staggered effect per project
-            let projectOffset = windowHeight * (index + 1) * 0.6; // Controls when they appear
+            let delay = index * 0.5; // Staggered effect
+            let moveDistance = direction === 1 ? "110vw" : "-110vw"; // Move fully across
 
-            setTimeout(() => {
-                if (scrollY > projectOffset) {
-                    project.style.opacity = "1";
-                    project.style.transition = "transform 2s ease-out, opacity 2s ease-out"; // **Smoother, Slower Animation**
-                    project.style.transform = `translateX(${(index % 2 === 0 ? "" : "-")}100vw)`; // Moves across screen
-                } else {
-                    project.style.opacity = "0";
-                    project.style.transition = "transform 2s ease-out, opacity 2s ease-out"; // **Slower Exit**
-                    project.style.transform = `translateX(${(index % 2 === 0 ? "-100vw" : "100vw")})`; // Moves back
+            gsap.to(project, {
+                x: moveDistance,
+                opacity: direction === 1 ? 1 : 0,
+                duration: 2, // Slowed down to 2 seconds
+                delay: delay,
+                ease: "power2.out",
+                onComplete: () => {
+                    if (direction === 1) {
+                        project.style.transform = "translateX(-110vw)";
+                    } else {
+                        project.style.transform = "translateX(110vw)";
+                    }
                 }
-            }, delay); // Adds a small delay for each project
+            });
         });
     });
 });
