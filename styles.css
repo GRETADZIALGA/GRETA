@@ -59,46 +59,24 @@ body {
     100% { transform: translateX(20%); } /* Super slow */
 }
 
-/* Projects Scroll In from Right */
+/* Projects Scroll In (with Random Placement) */
 .projects {
     position: absolute;
     width: 100%;
+    top: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 200px; /* More space between projects */
-    padding-top: 200vh; /* Longer scroll experience */
+    padding-top: 100vh;
 }
 
 /* Make each project appear at different vertical heights */
-.project-card:nth-child(1) { transform: translateX(120vw) translateY(-50px); }
-.project-card:nth-child(2) { transform: translateX(140vw) translateY(80px); }
-.project-card:nth-child(3) { transform: translateX(110vw) translateY(-100px); }
-.project-card:nth-child(4) { transform: translateX(130vw) translateY(60px); }
-
 .project-card {
-    width: 400px;
-    height: 600px;
+    width: 200px; /* Half the original size */
+    height: 300px;
+    position: absolute;
     opacity: 0;
-    transition: transform 1.5s ease-out, opacity 1.5s ease-out;
-    border-radius: 15px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-}
-/* White Background for Project Pages */
-.project-page {
-    background-color: white; /* Makes background white */
-    color: black; /* Ensures text is readable */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    padding: 20px;
-}
-
-/* Make Images Full-Screen */
-.image-container img {
-    width: 100vw; /* Full screen width */
-    height: 100vh; /* Full screen height */
-    object-fit: contain; /* Ensures entire image is visible */
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
