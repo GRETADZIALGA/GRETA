@@ -5,14 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
         let scrollY = window.scrollY;
 
         projects.forEach((project, index) => {
-            let projectOffset = window.innerHeight * (index + 1) * 0.6; // Staggered effect
+            let projectOffset = window.innerHeight * (index + 1) * 0.8; // Staggered effect
 
             if (scrollY > projectOffset) {
                 project.style.opacity = "1";
-                project.style.transform = `translateX(${(index % 2 === 0 ? "" : "-")}100px)`;
+                project.style.transform = `translateX(${window.innerWidth}px)`;
             } else {
                 project.style.opacity = "0";
-                project.style.transform = `translateX(${(index % 2 === 0 ? "100" : "-100")}px)`;
+                project.style.transform = `translateX(-100%)`;
             }
         });
     });
