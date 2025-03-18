@@ -10,7 +10,7 @@ body {
     font-family: Arial, sans-serif;
     overflow-x: hidden;
     overflow-y: auto;
-    height: 300vh; /* Longer scroll effect */
+    height: 300vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,20 +33,19 @@ body {
 .text-row {
     display: flex;
     white-space: nowrap;
-    font-size: 15vw; /* Huge GRETA */
+    font-size: 15vw;
     font-weight: bold;
     text-transform: uppercase;
     color: #ff0033;
     text-shadow: 5px 5px 0px black;
-    letter-spacing: 10px; /* Creates 1cm space */
+    letter-spacing: 10px;
 }
 
-/* Slower Background Animation */
 .left {
-    animation: moveLeft 30s linear infinite; /* Slower */
+    animation: moveLeft 20s linear infinite;
 }
 .right {
-    animation: moveRight 30s linear infinite; /* Slower */
+    animation: moveRight 20s linear infinite;
 }
 
 @keyframes moveLeft {
@@ -59,7 +58,7 @@ body {
     100% { transform: translateX(20%); }
 }
 
-/* Projects Scroll In (with Random Placement) */
+/* Projects Scroll */
 .projects {
     position: absolute;
     width: 100%;
@@ -67,17 +66,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 100px; /* More space between projects */
+    gap: 200px;
     padding-top: 100vh;
 }
 
-/* Make each project appear at different vertical heights */
 .project-card {
-    width: 200px; /* Half the original size */
+    width: 200px;
     height: 300px;
+    position: absolute;
     opacity: 0;
-    position: relative; /* Allows animation */
     border-radius: 10px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    transform: translateX(100vw); /* Start off-screen */
 }
