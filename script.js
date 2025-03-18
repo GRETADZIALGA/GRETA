@@ -6,14 +6,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         gsap.to(project, {
             x: "120vw", // Move fully across the screen
-            opacity: 1, // Keep fully visible
-            duration: 6, // Slow it down to 6 seconds
-            delay: index * 2, // Stagger effect so they don’t all move at once
+            opacity: 1, // Keep visible
+            duration: 12, // SUPER SLOW (12 seconds)
+            delay: index * 6, // Makes them move **one at a time** (6 sec delay between each)
             ease: "power2.out",
-            repeat: -1, // Loop animation forever
-            onRepeat: () => {
-                gsap.set(project, { x: "-120vw" }); // Reset to left after it disappears
-            }
+            onComplete: () => {
+                gsap.set(project, { x: "-120vw" }); // Reset to left after disappearing
+            },
+            repeat: -1 // Keeps looping so they always come in smoothly
         });
     });
 });
+
