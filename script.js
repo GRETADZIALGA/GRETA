@@ -1,25 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
-    gsap.registerPlugin(ScrollTrigger);
-
     const projects = document.querySelectorAll(".project-card");
 
-    projects.forEach((project, index) => {
-        let randomY = Math.random() * 300 - 150; // Random height variation
-        let startX = window.innerWidth * 1.2; // Start off-screen right
-        let endX = -window.innerWidth * 0.2; // End off-screen left
+    document.addEventListener("scroll", () => {
+        let scrollY = window.scrollY;
 
-        gsap.set(project, { x: startX, y: randomY });
+        projects.forEach((project, index) => {
+            let projectOffset = project.offsetTop - window.innerHeight / 1.5;
 
-        gsap.to(project, {
-            x: endX,
-            opacity: 1,
-            duration: 3, // Smooth transition
-            scrollTrigger: {
-                trigger: project,
-                start: "top bottom",
-                end: "top top",
-                scrub: true,
-                onEnterBack: () => gsap.to(project, { x: startX }), // Reverse effect
+            if (scrollY > projectOffset) {
+                project.style.opacity = "1";
+                project.style.transform = `translateX(${index % 2 === 0 ? '50px' : '-50px'})`;
+            } else {
+                project.style.opacity = "0.3";
+                project.style.transform = "translateX(0)";
             }
         });
     });
