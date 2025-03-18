@@ -13,11 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
         gsap.to(project, {
             x: endX,
             opacity: 1,
+            duration: 3, // Smooth transition
             scrollTrigger: {
                 trigger: project,
                 start: "top bottom",
                 end: "top top",
-                scrub: true, // Moves smoothly as you scroll
+                scrub: true,
+                onEnterBack: () => gsap.to(project, { x: startX }), // Reverse effect
             }
         });
     });
