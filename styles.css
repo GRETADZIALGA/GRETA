@@ -124,3 +124,22 @@ body {
     max-width: 1200px; /* Images are now bigger */
     display: block;
 }
+.epub-page {
+    background: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.epub-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.epub-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
