@@ -6,7 +6,6 @@
     <title>GRETA</title>
     <link rel="stylesheet" href="styles.css"> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://futurepress.github.io/epub.js/dist/epub.js"></script> <!-- EPUB.js -->
 </head>
 <body>
 
@@ -23,34 +22,12 @@
     <div class="projects">
         <a href="coperni.html" class="project-card"><img src="IMAGES/COPERNI/COPERNI01.jpg" alt="Coperni Project"></a>
         <a href="rickowens.html" class="project-card"><img src="IMAGES/RICKOWENS/RICKOWENS01.jpg" alt="Rick Owens Project"></a>
-        <a href="project3.html" class="project-card"><img src="IMAGES/themall.jpg" alt="Project 3"></a>
-        <a href="project4.html" class="project-card"><img src="IMAGES/jwlogo.jpg" alt="Project 4"></a>
-        <a href="project5.html" class="project-card"><img src="IMAGES/hello.jpg" alt="Project 5"></a>
+        <a href="jwproject.html" class="project-card"><img src="IMAGES/jwlogo.jpg" alt="JW Project"></a>
+        <a href="lny.html" class="project-card"><img src="IMAGES/themall.jpg" alt="LNY Project"></a>
+        <a href="midterm.html" class="project-card"><img src="IMAGES/hello.jpg" alt="Midterm Project"></a>
     </div>
-
-    <!-- EPUB Reader Section -->
-    <div class="epub-container">
-        <h2>Read EPUB Files</h2>
-        <select id="bookSelector">
-            <option value="https://drive.google.com/uc?export=download&id=13IpvBZERWJkD4k97jqeUOI4tAEMQpjX3">JWPROJECT.epub</option>
-            <option value="https://drive.google.com/uc?export=download&id=1tKXU4zSsIctoiv79IOnBPWj1aue-kRuf">LNY.epub</option>
-            <option value="https://drive.google.com/uc?export=download&id=1fNlgYF4E0nbv1WRwOPq73y1_LAbDCOdp">MIDTERM.epub</option>
-        </select>
-        <button onclick="loadBook()">Open Book</button>
-        <div id="viewer"></div>
-    </div>
-
-    <script>
-        let book;
-        function loadBook() {
-            const selectedBook = document.getElementById("bookSelector").value;
-            if (book) book.destroy(); // Destroy previous book if exists
-            book = ePub(selectedBook);
-            const rendition = book.renderTo("viewer", { width: "100%", height: "90vh" });
-            rendition.display();
-        }
-    </script>
 
     <script src="script.js"></script>
 </body>
 </html>
+
