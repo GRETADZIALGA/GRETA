@@ -2,23 +2,33 @@ document.addEventListener("DOMContentLoaded", function () {
     // GRETA Alternating Directions
     const textRows = document.querySelectorAll(".text-row");
     textRows.forEach((row, index) => {
-        if (index % 2 === 0) {
-            row.classList.add("left");
-        } else {
-            row.classList.add("right");
-        }
+        row.classList.add(index % 2 === 0 ? "left" : "right");
     });
 
     // Project Scroll Animation (One at a Time, Slower)
     const projectCards = document.querySelectorAll(".project-card");
-    let delay = 0;
+
     projectCards.forEach((card, index) => {
-        gsap.fromTo(card, 
-            { x: "-100vw", opacity: 0 }, 
-            { x: "100vw", opacity: 1, duration: 3, delay: delay, ease: "power1.inOut",
-                onComplete: () => gsap.to(card, { x: "200vw", opacity: 0, duration: 3, ease: "power1.inOut" }) 
+        const delay = index * 6; // 3s enter + 3s exit = 6s per card
+
+        gsap.fromTo(card,
+            { x: "-100vw", opacity: 0 },
+            {
+                x: "0",
+                opacity: 1,
+                duration: 3,
+                delay: delay,
+                ease: "power1.inOut",
+                onComplete: () => {
+                    gsap.to(card, {
+                        x: "100vw",
+                        opacity: 0,
+                        duration: 3,
+                        ease: "power1.inOut",
+                        delay: 0.5 // Small delay before exit
+                    });
+                }
             }
         );
-        delay += 3; // This makes sure they appear one at a time
     });
 });
