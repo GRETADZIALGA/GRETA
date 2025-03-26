@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>System Loading</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: black;
+      color: white;
+      font-family: 'Courier New', Courier, monospace;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header {
+      font-size: 1.8rem;
+      margin-bottom: 40px;
+    }
+
+    .status-text {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .loader-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .progress-bar {
+      width: 300px;
+      height: 20px;
+      border: 1px solid white;
+      background-color: #111;
+      position: relative;
+    }
+
+    .progress-fill {
+      background-color: white;
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease-in-out;
+    }
+
+    .percentage {
+      margin-left: 10px;
+      font-weight: bold;
+    }
+
+    .processing {
+      margin-right: 10px;
+      border: 1px solid white;
+      padding: 3px 8px;
+      font-size: 0.8rem;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      right: 30px;
+      color: gray;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">WELCOME TO MY PROFILE....</div>
+  <div class="status-text">//SYSTEM LOADING</div>
+
+  <div class="loader-wrapper">
+    <div class="processing">PROCESSING</div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="percentage" id="percentage">0%</div>
+  </div>
+
+  <div class="footer">RUNNING///</div>
+
+  <script>
+    let percent = 0;
+    const fill = document.getElementById("progress-fill");
+    const percentText = document.getElementById("percentage");
+
+    const loading = setInterval(() => {
+      if (percent >= 100) {
+        clearInterval(loading);
+        // TODO: Add transition to your actual portfolio here
+      } else {
+        percent++;
+        fill.style.width = percent + "%";
+        percentText.innerText = percent + "%";
+      }
+    }, 50);
+  </script>
+
+</body>
+</html>
