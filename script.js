@@ -25,6 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
           trigger: card,
           start: "top 80%",
           toggleActions: "play none none none",
+
+          if (percent >= 100) {
+  clearInterval(loading);
+  window.location.href = "main.html"; // or your actual portfolio file
+}
         },
       }
     );
