@@ -89,22 +89,22 @@
 
   <div class="footer">RUNNING///</div>
 
- <script>
-  let percent = 0;
-  const fill = document.getElementById("progress-fill");
-  const percentText = document.getElementById("percentage");
+  <script>
+    let percent = 0;
+    const fill = document.getElementById("progress-fill");
+    const percentText = document.getElementById("percentage");
 
-  const loading = setInterval(() => {
-    if (percent >= 100) {
-      clearInterval(loading);
-      window.location.href = "diagram.html"; // GO TO DIAGRAM PAGE NEXT
-    } else {
-      percent++;
-      fill.style.width = percent + "%";
-      percentText.innerText = percent + "%";
-    }
-  }, 50);
-</script>
+    const loading = setInterval(() => {
+      if (percent >= 100) {
+        clearInterval(loading);
+        window.location.href = "diagram.html"; // Redirect after loading complete
+      } else {
+        percent++;
+        fill.style.width = percent + "%";
+        percentText.innerText = percent + "%";
+      }
+    }, 50);
+  </script>
 
 </body>
 </html>
